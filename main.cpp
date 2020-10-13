@@ -4,10 +4,10 @@
 #include <string>
 
 void generate(int minStrLen, int maxStrLen, int numOfStrings, const std::string& file) {
-	std::ofstream ofs(file, std::ios::binary);
-	if (!ofs.is_open()) {
-		throw std::runtime_error("failed to open file");
-	}
+    std::ofstream ofs(file, std::ios::binary);
+    if (!ofs.is_open()) {
+        throw std::runtime_error("failed to open file");
+    }
 
     std::random_device rd;  
     std::mt19937 gen(rd()); 
@@ -15,13 +15,15 @@ void generate(int minStrLen, int maxStrLen, int numOfStrings, const std::string&
     std::uniform_int_distribution<> distribLetter(0, 25);
 
     while (numOfStrings--) {
-    	int curLen = distribLenSize(gen);
-    	std::string s;
-    	s.reserve(curLen);
-    	for (int i = 0; i < curLen; ++i) {
-    		s += char('a' + distribLetter(gen));
-    	}
-    	s += '\n';
+        int curLen = distribLenSize(gen);
+        std::string s;
+        s.reserve(curLen);
+        for (int i = 0; i < curLen; ++i) {
+            s += char('a' + distribLetter(gen));
+        }
+        if (numOfStrings > 0) {
+            s += '\n';
+        }
     	ofs << s;
     }
 }
