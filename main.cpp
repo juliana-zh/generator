@@ -24,51 +24,51 @@ void generate(int minStrLen, int maxStrLen, int numOfStrings, const std::string&
         if (numOfStrings > 0) {
             s += '\n';
         }
-    	ofs << s;
+        ofs << s;
     }
 }
 
 
 int main(int argc, char **argv) {
-	if (argc != 5) {
-		std::cerr << "Failed. Wrong num of args. Example: ./gen <min_str_len> <max_str_len> <num_of_strings> <file>" << std::endl;
-		return 1;
-	}
+    if (argc != 5) {
+        std::cerr << "Failed. Wrong num of args. Example: ./gen <min_str_len> <max_str_len> <num_of_strings> <file>" << std::endl;
+        return 1;
+    }
 
-	int minStrLen = 0;
-	try {
-		minStrLen = std::stoi(argv[1]);		
-	} catch (const std::exception& ex) {
-		std::cerr << "Failed: wrong minStrLen " << ex.what() << std::endl; 
-		return 1;
-	}
+    int minStrLen = 0;
+    try {
+        minStrLen = std::stoi(argv[1]);     
+    } catch (const std::exception& ex) {
+        std::cerr << "Failed: wrong minStrLen " << ex.what() << std::endl; 
+        return 1;
+    }
 
-	int maxStrLen = 0;
-	try {
-		maxStrLen = std::stoi(argv[2]);		
-	} catch (const std::exception& ex) {
-		std::cerr << "Failed: wrong maxStrLen " << ex.what() << std::endl; 
-		return 1;
-	}
+    int maxStrLen = 0;
+    try {
+        maxStrLen = std::stoi(argv[2]);     
+    } catch (const std::exception& ex) {
+        std::cerr << "Failed: wrong maxStrLen " << ex.what() << std::endl; 
+        return 1;
+    }
 
-	int numOfStrings = 0;
-	try {
-		numOfStrings = std::stoi(argv[3]);		
-	} catch (const std::exception& ex) {
-		std::cerr << "Failed: wrong numOfStrings " << ex.what() << std::endl; 
-		return 1;
-	}
+    int numOfStrings = 0;
+    try {
+        numOfStrings = std::stoi(argv[3]);      
+    } catch (const std::exception& ex) {
+        std::cerr << "Failed: wrong numOfStrings " << ex.what() << std::endl; 
+        return 1;
+    }
 
-	if (minStrLen <= 0 || maxStrLen <= 0 || minStrLen > maxStrLen || numOfStrings < 0) {
-		std::cerr << "Failed: minStrLen and maxStrLen must be > 0, minStrLen <= maxStrLen and numOfStrings >= 0" << std::endl;
-		return 1;
-	}
+    if (minStrLen <= 0 || maxStrLen <= 0 || minStrLen > maxStrLen || numOfStrings < 0) {
+        std::cerr << "Failed: minStrLen and maxStrLen must be > 0, minStrLen <= maxStrLen and numOfStrings >= 0" << std::endl;
+        return 1;
+    }
 
-	try {
-		generate(minStrLen, maxStrLen, numOfStrings, argv[4]);
-	} catch (const std::exception& ex) {
-		std::cerr << "Failed to generate. " << ex.what() << std::endl;
-		return 1;
-	}
-	return 0;
+    try {
+        generate(minStrLen, maxStrLen, numOfStrings, argv[4]);
+    } catch (const std::exception& ex) {
+        std::cerr << "Failed to generate. " << ex.what() << std::endl;
+        return 1;
+    }
+    return 0;
 }
